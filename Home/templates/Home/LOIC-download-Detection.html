@@ -1,0 +1,121 @@
+{% load static %}
+<html>
+<head>
+<title>DDoS Detection & Packet analyzer</title>
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+
+.rightside
+{
+text-align:right
+}
+
+.header{
+background-color: #333;
+color:white;
+}
+
+.info{
+display: block;
+background-color: lavender;
+padding: 14px 16px;
+}
+
+#footer{
+background: white;
+text-align: center;
+padding: 4px 6px;
+text-decoration: none;
+}
+
+.copyright{
+list-style-type: none;
+text-align:center;
+color: #999;
+margin:0;
+padding: 0;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<div class="image">
+				<img src="{% static '/sjsu3.png' %}" alt="SJSU" style="width:200px;height:150px;">
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="header">
+				<center>
+					<h1>DDoS Detection and Network Packet Analyzer</h1>
+				</center>
+			</div>
+		</div>
+
+		<div class="col-md-10">
+			<div class="rightside">
+				<h4>EE 209 Network Security</h4>
+				<h4>Team 07</h4>
+			</div>
+		</div>
+
+	</div>
+
+
+	<nav class="navbar navbar-inverse">
+		<ul class="nav navbar-nav">
+			<li><a href="/Home">Home</a></li>
+			<li  class="active" ><a href="/loic" >LOIC download Detection</a></li>
+			<li><a href="/irc">DDoS IRC</a></li>
+			<li><a href="/attack">Attack Detection</a></li>
+		</ul>
+	</nav>
+
+	
+	
+	
+	<h3>LOIC</h3>
+	<div class="info">
+		<p>Low Orbit Ion Cannon - An open source network stress testing and denial-of-service attack tool, written in C#. LOIC was initially developed by Praetox Techologies, but was later released into public domain, and now is hosted on several open source platforms.</p>
+
+		<p>LOIC performs a denial-of-service (DoS) attack (or when used by multiple individuals, a DDoS attack) on a target site by flooding the server with TCP or UDP packets with the intention of disrupting the service of a particular host. 
+		People have used LOIC to join voluntary botnets. The software inspired the creation of an independent JavaScript version called JS LOIC, as well as LOIC-derived web version called Low Orbit Web Cannon. These enable a DoS from a web browser.
+		</p>
+	</div>
+	<h3>LOIC download Detection</h3>
+	<div class="info">
+		<p> HTTP traffic is parsed and examined for HTTP GETs for the zipped LOIC binary. This is done using dpkt library. To examine the HTTP traffic, the Ethernet, IP, and TCP layers are extracted. Finally, the HTTP protocol rides on top of the TCP protocol layer. If the HTTP layer utilizes the GET method, the specific uniform resource identifier (URI) that the HTTP GET requested is parsed out. If this URI contains .zip and LOIC in the name, a message is printed to the screen with the IP that downloaded LOIC. This can help a clever administrator prove that a user downloaded LOIC as opposed to being infected by a virus.</p>
+
+
+	</div>
+
+	<p> Go Ahead and upload a .pcap file to determine the attacker who downloaded the LOIC toolkit!</p>
+		
+	<center><h4><form action="/result/"  method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+                                  <input type="file" name="loicfile" accept=".pcap ,.pcapng"><br>
+                                  <input type="submit">
+                                  </form> </h4></center>
+
+	<footer id="footer">
+	<ul class="copyright">
+		<li>© Team 7. All rights reserved.</li>
+		<li><a href="https://www.linkedin.com/in/puneethreddy-poddutoori/">Puneeth Reddy</a></li>
+	</ul>
+	</footer>
+
+</div>
+
+</body>
+
+</html>

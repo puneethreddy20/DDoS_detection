@@ -1,0 +1,1 @@
+web: gunicorn DDoS_detection.wsgi

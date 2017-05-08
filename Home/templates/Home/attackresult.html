@@ -1,0 +1,95 @@
+{% load static %}
+{% load listfilter %}
+<html>
+<head>
+<title>DDoS Detection & Packet analyzer</title>
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+
+.rightside
+{
+text-align:right
+}
+
+.header{
+background-color: #333;
+color:white;
+}
+
+.info{
+display: block;
+background-color: lavender;
+padding: 14px 16px;
+}
+
+#footer{
+background: white;
+text-align: center;
+padding: 4px 6px;
+text-decoration: none;
+}
+
+.copyright{
+list-style-type: none;
+text-align:center;
+color: #999;
+margin:0;
+padding: 0;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<div class="image">
+				<img src="{% static '/sjsu3.png' %}" alt="SJSU" style="width:200px;height:150px;">
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="header">
+				<center>
+					<h1>DDoS Detection and Network Packet Analyzer</h1>
+				</center>
+			</div>
+		</div>
+
+		<div class="col-md-10">
+			<div class="rightside">
+				<h4>EE 209 Network Security</h4>
+				<h4>Team 07</h4>
+			</div>
+		</div>
+
+	</div>
+
+
+	<nav class="navbar navbar-inverse">
+		<ul class="nav navbar-nav">
+			<li><a href="/Home">Home</a></li>
+			<li><a href="/loic" >LOIC download Detection</a></li>
+			<li><a href="/irc">DDoS IRC</a></li>
+			<li><a href="/attack">Attack Detection</a></li>
+		</ul>
+	</nav>
+
+	<h4>DDoS Attack Results:</h4>
+	<ul>
+	{% for s in source %}
+    	<li>{{ source|index:forloop.counter0 }} attacked {{ destination|index:forloop.counter0 }} by sending {{ packetssent|index:forloop.counter0 }} packets.</li>
+	{% endfor %}
+	</ul>
+
+
+</div>
+</body>
+</html>
