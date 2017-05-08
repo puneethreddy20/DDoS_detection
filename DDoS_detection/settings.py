@@ -25,7 +25,7 @@ SECRET_KEY = '#v%zfh=rkd_d&jrsb5f^b_!81)3sas&*(ibva05k01rb8hd-t0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ddos-detection.herokuapp.com']
 
 
 # Application definition
