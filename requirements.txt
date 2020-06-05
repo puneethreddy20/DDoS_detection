@@ -1,5 +1,5 @@
 ﻿dj-database-url==0.4.2
-Django==1.11.23
+Django==1.11.29
 dpkt==1.9.1
 gunicorn==19.7.1
 psycopg2==2.7.1
